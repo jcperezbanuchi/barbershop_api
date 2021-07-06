@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-const baseURL = 'http://localhost:5000/api/appointment/'
+const baseURL = 'http://localhost:8001/api/appointment/'
 
 export default class Appointments extends Component {
     constructor(props){
@@ -28,7 +28,7 @@ export default class Appointments extends Component {
             body: JSON.stringify({
                 firstname: this.state.firstname,
                 lastname: this.state.lastname,
-                barber: this.state. barber,
+                barber: this.state.barber,
                 phone: this.state.phone,
                 email: this.state.email,
                 contact: this.state.contact,
@@ -62,16 +62,25 @@ export default class Appointments extends Component {
                 <label htmlFor="firstname"></label>
                 <input type="text" id="firstname" name="firstname" onChange={ (event) => this.handleChange(event) } value={ this.state.name} placeholder="First name" />
                 <label htmlFor="lastname"></label>
-                <input type="text" id="lastname" name="lastname" onChange={ (event) => this.handleChange(event) } value={ this.state.name} placeholder="First name" />
+                <input type="text" id="lastname" name="lastname" onChange={ (event) => this.handleChange(event) } value={ this.state.name} placeholder="Last name" />
 
-                <label htmlFor="age"></label>
-                <input type="number" id="age" name="age" onChange={ (event) => this.handleChange(event) } value={ this.state.age} placeholder="Age (human years)" />
+                <label htmlFor="barber"></label>
+                <input type="text" id="barber" name="barber" onChange={ (event) => this.handleChange(event) } value={ this.state.barber} placeholder="Barber" />
                 
-                <label htmlFor="owner"></label>
-                <input type="text" id="owner" name="owner" onChange={ (event) => this.handleChange(event) } value={ this.state.owner} placeholder="Owner" />
+                <label htmlFor="phone"></label>
+                <input type="number" id="phone" name="phone" onChange={ (event) => this.handleChange(event) } value={ this.state.phone} placeholder="Phone Number" />
 
-                <label htmlFor="breed"></label>
-                <input type="text" id="breed" name="breed" onChange={ (event) => this.handleChange(event) } value={ this.state.breed} placeholder="Breed" />
+                <label htmlFor="contact"></label>
+                <input type="text" id="contact" name="contact" onChange={ (event) => this.handleChange(event) } value={ this.state.contact} placeholder="Email or Phone" />
+
+                <label htmlFor="date"></label>
+                <input type="date" id="date" name="date" onChange={ (event) => this.handleChange(event) } value={ this.state.date} placeholder="Date" />
+
+                <label htmlFor="time"></label>
+                <input type="time" id="time" name="time" onChange={ (event) => this.handleChange(event) } value={ this.state.time} placeholder="Time" />
+
+                <label htmlFor="comment"></label>
+                <input type="text" id="comment" name="comment" onChange={ (event) => this.handleChange(event) } value={ this.state.comment} placeholder="Any Comments" />
 
                 <input type="submit" value="Add a Appointment" />
             </form>
