@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Appointments from './components/Appointments'
+import Appointments from './components/NewAppointment'
 const appointmentsItems = [
   {
     "id": 1,

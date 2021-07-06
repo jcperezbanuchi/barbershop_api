@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 const baseURL = 'http://localhost:8001/api/appointment/'
 
-export default class Appointments extends Component {
+export default class NewAppointment extends Component {
     constructor(props){
         super(props)
         this.state ={
@@ -58,6 +58,7 @@ export default class Appointments extends Component {
     render() {
         return (
             <div>
+                <h1>Add an appointment</h1>
                 <form onSubmit={ (event) => this.handleSubmit(event) }>
                 <label htmlFor="firstname"></label>
                 <input type="text" id="firstname" name="firstname" onChange={ (event) => this.handleChange(event) } value={ this.state.name} placeholder="First name" />
@@ -82,7 +83,7 @@ export default class Appointments extends Component {
                 <label htmlFor="comment"></label>
                 <input type="text" id="comment" name="comment" onChange={ (event) => this.handleChange(event) } value={ this.state.comment} placeholder="Any Comments" />
 
-                <input type="submit" value="Add a Appointment" />
+                <input type="submit" value="Add Appointment" />
             </form>
             </div>
         )
