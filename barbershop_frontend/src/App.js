@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import Appointments from './components/Appointments'
 const appointmentsItems = [
   {
     "id": 1,
@@ -26,7 +26,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <h1> hello </h1>
+        <Appointments />
       </div>
     )
   }
