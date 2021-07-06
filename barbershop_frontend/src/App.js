@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import Appointments from './components/NewAppointment'
+import AppointmentContainer from './components/AppointmentContainer'
+
 const appointmentsItems = [
   {
     "id": 1,
@@ -26,7 +27,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <Appointments />
+        <AppointmentContainer />
       </div>
     )
   }
