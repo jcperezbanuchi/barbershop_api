@@ -39,7 +39,7 @@ export default class NewAppointment extends Component {
             headers: {'Content-Type': 'application/json'}
         }).then(res => res.json())
         .then(resJson => {
-            this.props.handleAddDog(resJson.data)
+            this.props.handleAddAppointment(resJson.data)
             this.setState({
                 firstname: '',
                 lastname: '',
@@ -78,7 +78,19 @@ export default class NewAppointment extends Component {
                 <input type="date" id="date" name="date" onChange={ (event) => this.handleChange(event) } value={ this.state.date} placeholder="Date" />
 
                 <label htmlFor="time"></label>
-                <input type="time" id="time" name="time" onChange={ (event) => this.handleChange(event) } value={ this.state.time} placeholder="Time" />
+                <select id="time" name="time" value = {this.state.time} onChange={ (event) => this.handleChange(event) }>
+                    <option >7am-8am</option>
+                    <option value="8am-9am">8am-9am</option>
+                    <option value="9am-10am">9am-10am</option>
+                    <option value="11am-12pm">11am-12pm</option>
+                    <option value="12pm-1pm">12pm-1pm</option>
+                    <option value="2pm-3pm">2pm-3pm</option>
+                    <option value="3pm-4pm">3pm-4pm</option>
+                    <option selected="selected" value="4pm-5pm">4pm-5pm</option>
+                    <option value="5pm-6pm">5pm-6pm</option>
+                    <option value="6pm-7pm">6pm-7pm</option>
+              <     option value="7pm-8pm">7pm-8pm</option>
+            </select>
 
                 <label htmlFor="comment"></label>
                 <input type="text" id="comment" name="comment" onChange={ (event) => this.handleChange(event) } value={ this.state.comment} placeholder="Any Comments" />

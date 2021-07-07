@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import NewAppointment from './NewAppointment'
 
-const baseURL = 'http://localhost:8001/api/appointment/'
+const baseURL = 'http://localhost:8001/api/appointments/'
 
 export default class AppointmentContainer extends Component {
     constructor(props){
@@ -13,6 +14,15 @@ export default class AppointmentContainer extends Component {
     componentDidMount = () => {
         this.getAppointments()
     }
+
+    handleAddDog(appointment) {
+        const copyAppointments = [...this.state.appointments]
+        copyDogs.unshift(appointment)
+        this.setState({
+            dogs: copyDogs
+        })
+    }
+
     getAppointments() {
         fetch(baseURL,
             {method: 'GET'})
@@ -22,6 +32,7 @@ export default class AppointmentContainer extends Component {
     render() {
         return (
             <div>
+                <NewAppointment />
                 <table>
                     <thead>
                     <tr>
