@@ -16,7 +16,7 @@ const baseURL  = 'http://localhost:8001/appointment/'
 export default class NewAppointment extends Component {
     constructor(props){
         super(props)
-        this.state ={
+        this.state ={ 
             firstname: '',
             lastname: '',
             barber: '',
@@ -32,8 +32,11 @@ export default class NewAppointment extends Component {
         this.setState({ [event.currentTarget.id]: event.currentTarget.value})
     }
     
+   
+
     handleSubmit(event) {
         event.preventDefault()
+        
         fetch(baseURL, {
             method: 'POST',
             body: JSON.stringify({
@@ -64,6 +67,7 @@ export default class NewAppointment extends Component {
             })
         })
         .catch(error => console.log({ 'Error': error }))
+        
     }
     render() {
         return (
@@ -112,7 +116,7 @@ export default class NewAppointment extends Component {
                         <input type="text" id="comment" name="comment" onChange={ (event) => this.handleChange(event) } value={ this.state.comment} placeholder="Any Comments" />
                 
                     <ModalFooter>
-                    <input type="submit" value="Add Appointment" />
+                    <Input type="submit" value="Add Appointment" />
                     </ModalFooter>
                     </Form>
                 </ModalBody>
