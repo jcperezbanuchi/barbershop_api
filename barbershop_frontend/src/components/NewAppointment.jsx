@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
-const baseURL = 'http://localhost:8001/api/appointment/'
+
+const baseURL  = 'http://localhost:8001/appointment/'
 
 export default class NewAppointment extends Component {
     constructor(props){
@@ -33,7 +34,7 @@ export default class NewAppointment extends Component {
                 email: this.state.email,
                 contact: this.state.contact,
                 date: this.state.date,
-                time: this.state.time,
+                time: this.state.time,  
                 comment: this.state.comment
             }),
             headers: {'Content-Type': 'application/json'}
@@ -54,7 +55,6 @@ export default class NewAppointment extends Component {
         })
         .catch(error => console.log({ 'Error': error }))
     }
-
     render() {
         return (
             <div>
@@ -86,7 +86,7 @@ export default class NewAppointment extends Component {
                     <option value="12pm-1pm">12pm-1pm</option>
                     <option value="2pm-3pm">2pm-3pm</option>
                     <option value="3pm-4pm">3pm-4pm</option>
-                    <option selected="selected" value="4pm-5pm">4pm-5pm</option>
+                    <option value="4pm-5pm">4pm-5pm</option>
                     <option value="5pm-6pm">5pm-6pm</option>
                     <option value="6pm-7pm">6pm-7pm</option>
               <     option value="7pm-8pm">7pm-8pm</option>
