@@ -7,7 +7,6 @@ export default class AppointmentContainer extends Component {
     constructor(props){
         super(props)
         this.state = {
-            appointmentList: [],
             updateAppointment: {}
         }
     }
