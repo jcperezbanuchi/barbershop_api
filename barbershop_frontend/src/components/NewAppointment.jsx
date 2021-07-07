@@ -40,7 +40,7 @@ export default class NewAppointment extends Component {
             headers: {'Content-Type': 'application/json'}
         }).then(res => res.json())
         .then(resJson => {
-            this.props.handleAddAppointment(resJson.data)
+            this.props.handleAddAppointment(resJson)
             this.setState({
                 firstname: '',
                 lastname: '',

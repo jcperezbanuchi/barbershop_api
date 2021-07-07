@@ -19,7 +19,7 @@ export default class AppointmentContainer extends Component {
         const copyAppointments = [...this.state.appointmentList]
         copyAppointments.unshift(appointment)
         this.setState({
-            appointments: copyAppointments
+            appointmentList: copyAppointments
         })
     }
 
@@ -29,11 +29,24 @@ export default class AppointmentContainer extends Component {
             .then(parsedData => {this.setState({appointmentList: parsedData})}, err => console.log(err))
             .catch((e)=>console.log(e.message))
     }
+    deleteAppointment(id){
+        fetch(baseURL + 'appointment/'+ id, {
+            method:'DELETE'
+        })
+        .then(res=> {
+            if(res.status === 200){
+                const newAppointments = this.state.appointmentList.filter(appointment => appointment.id !== id );
+                this.setState({
+                    appointmentList: newAppointments
+            })
+            }
+        })
+    }
 
     render() {
         return (
             <div>
-                <NewAppointment />
+                <NewAppointment handleAddAppointment = {(appointment) => this.handleAddAppointment(appointment)} />
                 <table>
                     <thead>
                         <tr>
@@ -62,7 +75,7 @@ export default class AppointmentContainer extends Component {
                                         <td> {appointment.time} </td>
                                         <td> {appointment.comment} </td>
                                         <td onClick = { () => this.showUpdateForm(appointment)}> Update </td>
-                                        <td><button onClick={() => this.deleteDog(appointment.id)}>X </button></td>
+                                        <td><button onClick={() => this.deleteAppointment(appointment.id)}>X </button></td>
                                     </tr>
                                 )
                             }
