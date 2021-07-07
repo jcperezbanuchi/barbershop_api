@@ -7,7 +7,7 @@ export default class AppointmentContainer extends Component {
     constructor(props){
         super(props)
         this.state = {
-            appointments: [],
+            appointmentList: [],
             updateAppointment: {}
         }
     }
@@ -15,11 +15,11 @@ export default class AppointmentContainer extends Component {
         this.getAppointments()
     }
 
-    handleAddDog(appointment) {
-        const copyAppointments = [...this.state.appointments]
-        copyDogs.unshift(appointment)
+    handleAddAppointment(appointment) {
+        const copyAppointments = [...this.state.appointmentList]
+        copyAppointments.unshift(appointment)
         this.setState({
-            dogs: copyDogs
+            appointments: copyAppointments
         })
     }
 
@@ -33,41 +33,7 @@ export default class AppointmentContainer extends Component {
         return (
             <div>
                 <NewAppointment />
-                <table>
-                    <thead>
-                    <tr>
-                        <td>First name </td>
-                        <td>Last Name</td>
-                        <td>Barber</td>
-                        <td>Phone</td>
-                        <td>Email</td>
-                        <td>Contact</td>
-                        <td>Date</td>
-                        <td>Time</td>
-                        <td>Comment</td>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {this.state.appointments.map(
-                        (appointment) =>{
-                            return (
-                                <tr key= {appointment.id}>
-                                    <td>{appointment.firstname}</td>
-                                    <td>{appointment.lastname}</td>
-                                    <td>{appointment.barber}</td>
-                                    <td>{appointment.phone}</td>
-                                    <td>{appointment.email}</td>
-                                    <td>{appointment.contact}</td>
-                                    <td>{appointment.date}</td>
-                                    <td>{appointment.time}</td>
-                                    <td>{appointment.comment}</td>
-
-                            </tr>
-                        )
-                    }
-                )}
-                    </tbody>
-                </table>
+                
             </div>
         )
     }

@@ -29,6 +29,42 @@ export default class App extends Component {
       <div>
    
         <AppointmentContainer />
+
+        <table>
+                    <thead>
+                    <tr>
+                        <td>First name </td>
+                        <td>Last Name</td>
+                        <td>Barber</td>
+                        <td>Phone</td>
+                        <td>Email</td>
+                        <td>Contact</td>
+                        <td>Date</td>
+                        <td>Time</td>
+                        <td>Comment</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {this.state.appointmentList.map(
+                        (appointment) =>{
+                            return (
+                                <tr key= {appointment.id}>
+                                    <td>{appointment.firstname}</td>
+                                    <td>{appointment.lastname}</td>
+                                    <td>{appointment.barber}</td>
+                                    <td>{appointment.phone}</td>
+                                    <td>{appointment.email}</td>
+                                    <td>{appointment.contact}</td>
+                                    <td>{appointment.date}</td>
+                                    <td>{appointment.time}</td>
+                                    <td>{appointment.comment}</td>
+
+                            </tr>
+                        )
+                    }
+                )}
+                    </tbody>
+                </table>
       </div>
     )
   }
