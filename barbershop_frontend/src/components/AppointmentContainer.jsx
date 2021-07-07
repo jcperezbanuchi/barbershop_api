@@ -41,7 +41,6 @@ export default class AppointmentContainer extends Component {
     render() {
         return (
             <div>
-                <h1>Welcome </h1>
                 <Button onClick= {(e) =>this.toggle(e)}>Make an Appointment</Button>{ this.state.modal ?
                 <NewAppointment toggle = {() => this.toggle} handleAddAppointment = {(appointment) => this.handleAddAppointment(appointment)} handleCloseModal ={(e)=> this.handleCloseModal}/>
                 :

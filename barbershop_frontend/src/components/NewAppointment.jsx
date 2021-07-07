@@ -36,7 +36,7 @@ export default class NewAppointment extends Component {
 
     handleSubmit(event) {
         event.preventDefault()
-        
+        alert('Your Appointment has been submited')
         fetch(baseURL, {
             method: 'POST',
             body: JSON.stringify({
