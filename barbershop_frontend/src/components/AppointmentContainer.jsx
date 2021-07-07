@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import NewAppointment from './NewAppointment'
-
+import { Button } from 'reactstrap'
 const baseURL  = 'http://localhost:8001/'
 
 export default class AppointmentContainer extends Component {
@@ -8,12 +8,16 @@ export default class AppointmentContainer extends Component {
         super(props)
         this.state = {
             appointmentList: [],
-            updateAppointment: {}
+            modal: false,
+            
         }
     }
     componentDidMount = () => {
         this.getAppointments()
     }
+    toggle = () => {
+        this.setState({ modal: !this.state.modal });
+      };
 
     handleAddAppointment(appointment) {
         const copyAppointments = [...this.state.appointmentList]
@@ -29,59 +33,16 @@ export default class AppointmentContainer extends Component {
             .then(parsedData => {this.setState({appointmentList: parsedData})}, err => console.log(err))
             .catch((e)=>console.log(e.message))
     }
-    deleteAppointment(id){
-        fetch(baseURL + 'appointment/'+ id, {
-            method:'DELETE'
-        })
-        .then(res=> {
-            if(res.status === 200){
-                const newAppointments = this.state.appointmentList.filter(appointment => appointment.id !== id );
-                this.setState({
-                    appointmentList: newAppointments
-            })
-            }
-        })
-    }
-
+  
     render() {
         return (
             <div>
-                <NewAppointment handleAddAppointment = {(appointment) => this.handleAddAppointment(appointment)} />
-                <table>
-                    <thead>
-                        <tr>
-                            <td>First Name</td>
-                            <td>Last Name</td>
-                            <td>Barber</td>
-                            <td>Phone</td>
-                            <td>email</td>
-                            <td>contact</td>
-                            <td>date</td>
-                            <td>time</td>
-                            <td>comment</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.state.appointmentList.map(
-                            appointment => {
-                                return (
-                                    <tr key = {appointment.id}>
-                                        <td> {appointment.firstname} </td>
-                                        <td> {appointment.lastname} </td>
-                                        <td> {appointment.barber} </td>
-                                        <td> {appointment.phone} </td>
-                                        <td> {appointment.email} </td>
-                                        <td> {appointment.date} </td>
-                                        <td> {appointment.time} </td>
-                                        <td> {appointment.comment} </td>
-                                        <td onClick = { () => this.showUpdateForm(appointment)}> Update </td>
-                                        <td><button onClick={() => this.deleteAppointment(appointment.id)}>X </button></td>
-                                    </tr>
-                                )
-                            }
-                        )}
-                    </tbody>
-                </table>
+                <h1>Welcome </h1>
+                <Button onClick= {(e) =>this.toggle(e)}>Make an Appointment</Button>{ this.state.modal ?
+                <NewAppointment toggle = {() => this.toggle} handleAddAppointment = {(appointment) => this.handleAddAppointment(appointment)} />
+                :
+                this.state.modal
+                }
             </div>
         )
     }
