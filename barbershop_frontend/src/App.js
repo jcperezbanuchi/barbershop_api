@@ -1,23 +1,33 @@
 import React, { Component } from 'react'
-import { Nav, Navbar, NavLink } from 'reactstrap'
 import AppointmentContainer from './components/AppointmentContainer'
+import './App.css'
+import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom'
+import MainNavigation from './pages/Navigation/MainNavigation'
 
+import Home from './components/Home'
 
 export default class App extends Component {
   render() {
     return (
-      <div>
-        <Navbar bg="dark" variant="dark">
-    <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-    <Nav className="mr-auto">
-      <NavLink href="#home">Home</NavLink>
-      <NavLink href="#features">Features</NavLink>
-      <NavLink href="#pricing">Pricing</NavLink>
-    </Nav>
-    
-  </Navbar>
-        <AppointmentContainer />
-      </div>
+      <BrowserRouter>
+      <React.Fragment>
+      <MainNavigation/>
+      <main className="main-content">
+        <Switch>
+          <Redirect from='/' to= '/home' exact/>
+          <Redirect from='/appointment' to ='/' exact/>
+          
+          <Route path='/auth' component={Auth}/>
+          <Route path="/home" component={Home}/>
+          <Route path='/appointment' component={AppointmentContainer}/>
+          <Route path='/ourServices ' component={null}/>
+          <Route path='/team' component={null}/>
+
+      
+        </Switch>
+        </main>
+        </React.Fragment>
+      </BrowserRouter>
     )
   }
 }
