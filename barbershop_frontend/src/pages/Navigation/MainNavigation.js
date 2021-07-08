@@ -15,7 +15,7 @@ export default class MainNavigation extends Component {
                     <ul>
                         <li><NavLink to='/home'>Home</NavLink></li>
                         <li><NavLink to='/appointment'>Make An Appointment</NavLink></li>
-                        <li><NavLink to='/service'>Our Services</NavLink></li>
+                        <li><NavLink to='/ourservices'>Our Services</NavLink></li>
                         <li><NavLink to='/team'>Team</NavLink></li>
 
                     </ul>

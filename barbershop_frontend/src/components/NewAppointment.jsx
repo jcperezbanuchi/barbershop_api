@@ -71,9 +71,9 @@ export default class NewAppointment extends Component {
     }
     render() {
         return (
-                <Modal isOpen={true} toggle={this.props.toggle()}>
-                    <ModalHeader toggle={this.props.toggle()}>Add an Appointment </ModalHeader>
-                        <ModalBody>
+                // <Modal isOpen={true} toggle={this.props.toggle()}>
+                //     <ModalHeader toggle={this.props.toggle()}>Add an Appointment </ModalHeader>
+                //         <ModalBody>
                         <Form onSubmit={ (event) => this.handleSubmit(event) } >
                             <FormGroup>
                         <Label htmlFor="firstname"></Label>
@@ -112,15 +112,15 @@ export default class NewAppointment extends Component {
                             <option value="7pm-8pm">7pm-8pm</option>
                         </select>
 
-                        <label htmlFor="comment"></label>
+                        <Label htmlFor="comment"></Label>
                         <input type="text" id="comment" name="comment" onChange={ (event) => this.handleChange(event) } value={ this.state.comment} placeholder="Any Comments" />
                 
-                    <ModalFooter>
+                   
                     <Input type="submit" value="Add Appointment" />
-                    </ModalFooter>
+                  
                     </Form>
-                </ModalBody>
-            </Modal>
+            //     </ModalBody>
+            // </Modal>
         )
     }
 }

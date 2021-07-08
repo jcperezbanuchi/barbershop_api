@@ -5,6 +5,8 @@ import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom'
 import MainNavigation from './pages/Navigation/MainNavigation'
 
 import Home from './components/Home'
+import OurServices from './components/OurServices'
+import Team from './components/Team'
 
 export default class App extends Component {
   render() {
@@ -15,13 +17,10 @@ export default class App extends Component {
       <main className="main-content">
         <Switch>
           <Redirect from='/' to= '/home' exact/>
-          <Redirect from='/appointment' to ='/' exact/>
-          
-          <Route path='/auth' component={Auth}/>
           <Route path="/home" component={Home}/>
           <Route path='/appointment' component={AppointmentContainer}/>
-          <Route path='/ourServices ' component={null}/>
-          <Route path='/team' component={null}/>
+          <Route path='/ourservices' component={OurServices}/>
+          <Route path='/team' component={Team}/>
 
       
         </Switch>
