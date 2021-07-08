@@ -20,7 +20,7 @@ export default class AppointmentContainer extends Component {
       };
 
     handleCloseModal () {
-    	this.setState({ modal: false });
+    	this.setState({ modal: this.state.modal });
   	}
 
     handleAddAppointment(appointment) {
