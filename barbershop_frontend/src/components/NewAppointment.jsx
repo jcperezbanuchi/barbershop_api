@@ -10,7 +10,7 @@ import {
     Label,
   } from "reactstrap";
 
-const baseURL  = 'http://localhost:8001/appointment/'
+const baseURL  = 'http://localhost:8001/appointments/'
 
 export default class NewAppointment extends Component {
     constructor(props){
@@ -35,7 +35,7 @@ export default class NewAppointment extends Component {
 
     handleSubmit(event) {
         event.preventDefault()
-        alert('Your Appointment has been submited')
+        
         fetch(baseURL, {
             method: 'POST',
             body: JSON.stringify({
