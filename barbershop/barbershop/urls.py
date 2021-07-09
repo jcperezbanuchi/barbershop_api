@@ -24,5 +24,6 @@ router.register(r'appointment', views.AppointmentView , 'appointment')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include(router.urls))
+    path('', include(router.urls)),
+    path('' , include('accounts.urls'))
 ]

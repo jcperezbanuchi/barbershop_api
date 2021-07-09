@@ -40,11 +40,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'rest_framework',
-    'knox'
+    'knox',
+    'accounts'
 ]
 
 REST_FRAMEWORK={
-    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication')
+    'DEFAULT_AUTHENTICATION_CLASSES': 
+    ('knox.auth.TokenAuthentication',)
 }
 
 MIDDLEWARE = [
@@ -59,7 +61,7 @@ MIDDLEWARE = [
 
 ]
 
-# CORS_ORIGIN_ALLOW_ALL=True
+CORS_ORIGIN_ALLOW_ALL=True
 
 
 ROOT_URLCONF = 'barbershop.urls'
