@@ -41,9 +41,47 @@ export default class AppointmentContainer extends Component {
     render() {
         return (
             <div>
-                {/* <Button onClick= {(e) =>this.toggle(e)}>Make an Appointment</Button>{ this.state.modal ? */}
-                <NewAppointment toggle = {() => this.toggle} handleAddAppointment = {(appointment) => this.handleAddAppointment(appointment)} handleCloseModal ={(e)=> this.handleCloseModal}/>
-                
+                <Button onClick= {(e) =>this.toggle(e)}>Make an Appointment</Button>{ this.state.modal ?
+                <NewAppointment isOpen={true} toggle = {() => this.toggle} handleAddAppointment = {(appointment) => this.handleAddAppointment(appointment)} handleCloseModal ={(e)=> this.handleCloseModal}/>
+                :
+                ''
+                }
+                <table>
+                    <thead>
+                        <tr>
+                            <td>First Name</td>
+                            <td>Last Name</td>
+                            <td>Barber</td>
+                            <td>Phone</td>
+                            <td>email</td>
+                            <td>contact</td>
+                            <td>date</td>
+                            <td>time</td>
+                            <td>comment</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.state.appointmentList.map(
+                            (appointment) => {
+                                return (
+                                    <tr key = {appointment.id}>
+                                        <td> {appointment.firstname} </td>
+                                        <td> {appointment.lastname} </td>
+                                        <td> {appointment.barber} </td>
+                                        <td> {appointment.phone} </td>
+                                        <td> {appointment.email} </td>
+                                        <td> {appointment.contact} </td>
+                                        <td> {appointment.date} </td>
+                                        <td> {appointment.time} </td>
+                                        <td> {appointment.comment} </td>
+                                        <td onClick = { () => this.showUpdateForm(appointment)}> Update </td>
+                                        <td><button onClick={() => this.deleteAppointment(appointment.id)}>X </button></td>
+                                    </tr>
+                                )
+                            }
+                        )}
+                    </tbody>
+                </table>
             </div>
         )
     }

@@ -1,13 +1,20 @@
 from django.shortcuts import render
-from rest_framework import viewsets
+from rest_framework import viewsets, permissions
 from .serializers import AppointmentSerializer
 from .models import Appointment
-from django.http import HttpResponse
+
 
 # Create your views here.
 class AppointmentView (viewsets.ModelViewSet):
+    permission_classes = [
+        permissions.IsAuthenticated
+    ]
     serializer_class = AppointmentSerializer
-    queryset = Appointment.objects.all()
 
+    def get_queryset(self):
+        return self.request.user.appointmentList.all()
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
     
-    
+

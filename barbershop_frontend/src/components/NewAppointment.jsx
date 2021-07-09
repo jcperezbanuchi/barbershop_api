@@ -71,9 +71,9 @@ export default class NewAppointment extends Component {
     }
     render() {
         return (
-                // <Modal isOpen={true} toggle={this.props.toggle()}>
-                //     <ModalHeader toggle={this.props.toggle()}>Add an Appointment </ModalHeader>
-                //         <ModalBody>
+                <Modal isOpen={true} toggle={this.props.toggle()}>
+                    <ModalHeader toggle={this.props.toggle()}>Add an Appointment </ModalHeader>
+                        <ModalBody>
                         <Form onSubmit={ (event) => this.handleSubmit(event) } >
                             <FormGroup>
                         <Label htmlFor="firstname"></Label>
@@ -119,8 +119,8 @@ export default class NewAppointment extends Component {
                     <Input type="submit" value="Add Appointment" />
                   
                     </Form>
-            //     </ModalBody>
-            // </Modal>
+                </ModalBody>
+            </Modal>
         )
     }
 }

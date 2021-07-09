@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Appointment(models.Model):
@@ -8,6 +9,7 @@ class Appointment(models.Model):
   phone = models.CharField(max_length=12)
   email = models.EmailField(max_length=254, blank=True, null=True)
   contact = models.CharField(max_length=64, blank=True, null=True)
+  owner = models.ForeignKey(User, related_name='appointments', on_delete=models.CASCADE, null=True)
   date = models.DateField()
   time = models.CharField(max_length=64)
   comment = models.TextField(blank=True, null=True)
