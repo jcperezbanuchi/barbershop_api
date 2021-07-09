@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import AppointmentContainer from './AppointmentContainer'
+// import AppointmentContainer from './AppointmentContainer'
 
 export default class Home extends Component {
     render() {
