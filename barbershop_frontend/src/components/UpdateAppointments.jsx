@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import {
-    
+import {   
     Modal,
     ModalHeader,
     ModalBody,
@@ -9,15 +8,12 @@ import {
     Input,
     Label,
   } from "reactstrap";
+const baseURL  = 'http://localhost:8001/'
 
-const baseURL  = 'http://localhost:8001/appointments/'
-
-
-export default class NewAppointment extends Component {
-    
+export default class UpdateAppointments extends Component {
     constructor(props){
         super(props)
-        this.state ={ 
+        this.state = {
             firstname: '',
             lastname: '',
             barber: '',
@@ -29,17 +25,32 @@ export default class NewAppointment extends Component {
             comment: ''
         }
     }
+    
     handleChange(event) {
         this.setState({ [event.currentTarget.id]: event.currentTarget.value})
     }
-    
-    
+    componentDidMount = () => {
+        this.setUpdateAppointment()
+    }
+    setUpdateAppointment(){
+        this.setState({
+            id: this.props.appointment.id,
+            firstname: this.props.appointment.firstname,
+            lastname: this.props.appointment.lastname,
+            barber: this.props.appointment.barber,
+            phone: this.props.appointment.phone,
+            email: this.props.appointment.email,
+            contact: this.props.appointment.contact,
+            date: this.props.appointment.date,
+            time: this.props.appointment.time,
+            comment: this.props.appointment.comment
 
+        })
+    }
     handleSubmit(event) {
         event.preventDefault()
-        
-        fetch(baseURL, {
-            method: 'POST',
+        fetch(`${baseURL}appointments/${this.state.id}`, {
+            method: 'PUT',
             body: JSON.stringify({
                 firstname: this.state.firstname,
                 lastname: this.state.lastname,
@@ -51,37 +62,31 @@ export default class NewAppointment extends Component {
                 time: this.state.time,  
                 comment: this.state.comment
             }),
-            headers: {'Content-Type': 'application/json'}
-        }).then(res => res.json())
-            .then(resJson => {
-                this.props.handleAddAppointment(resJson)
-                this.setState({
-                    firstname: '',
-                    lastname: '',
-                    barber: '',
-                    phone: '',
-                    email: '',
-                    contact: '',
-                    date: '',
-                    time: '',
-                    comment: ''
-            })
+            headers: {
+                'Content-Type': 'application/json'
+            }
         })
-        .catch(error => console.log({ 'Error': error }))
+            .then(res => res.json())
+            .then(resJson => {
+                this.props.handleUpdateAppointment(resJson.data)
         
-    }
+            })
+            .catch(error => console.log({ 'Error': error }))
+    };
+
+
+
     render() {
         return (
-           
-                <Modal isOpen={true} toggle={this.props.toggle()}>
-                    <ModalHeader toggle={this.props.toggle()}>Add an Appointment </ModalHeader>
+            <Modal isOpen={true} toggle={this.props.toggle()} >
+                    <ModalHeader >Add an Appointment </ModalHeader>
                         <ModalBody>
                         <Form onSubmit={ (event) => this.handleSubmit(event) } >
                             <FormGroup>
                         <Label htmlFor="firstname"></Label>
-                        <Input type="text" id="firstname" name="firstname" onChange={ (event) => this.handleChange(event) } value={ this.state.name} placeholder="First name" />
+                        <Input type="text" id="firstname" name="firstname" onChange={ (event) => this.handleChange(event) } value={ this.state.firstname} placeholder="First name" />
                         <Label htmlFor="lastname"></Label>
-                        <Input type="text" id="lastname" name="lastname" onChange={ (event) => this.handleChange(event) } value={ this.state.name} placeholder="Last name" />
+                        <Input type="text" id="lastname" name="lastname" onChange={ (event) => this.handleChange(event) } value={ this.state.lastname} placeholder="Last name" />
 
                         <Label htmlFor="barber"></Label>
                         <Input type="text" id="barber" name="barber" onChange={ (event) => this.handleChange(event) } value={ this.state.barber} placeholder="Prefered Barber" />
@@ -118,7 +123,7 @@ export default class NewAppointment extends Component {
                         <Input type="text" id="comment" name="comment" onChange={ (event) => this.handleChange(event) } value={ this.state.comment} placeholder="Any Comments" />
                 
                    
-                    <Input type="submit" value="Add Appointment" />
+                    <Input type="submit" value="Edit Appointment" />
                   
                     </Form>
                 </ModalBody>

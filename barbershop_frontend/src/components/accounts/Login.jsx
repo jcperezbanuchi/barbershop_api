@@ -9,7 +9,7 @@ export default class Login extends Component {
         this.state = {
             username: '',
             password: '',
-            isAuthenticated: false,
+            isAuthenticated: true,
       };
     }
     onSubmit = (e) => {
@@ -19,7 +19,7 @@ export default class Login extends Component {
             body: JSON.stringify({
                 username: this.state.username,
                 password: this.state.password,
-                isAuthenticated: true
+                
             }),
             headers: {
                 'Content-Type': 'application/json'

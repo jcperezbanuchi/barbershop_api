@@ -19,7 +19,7 @@ export default class App extends Component {
         <Switch>
           <Redirect from='/' to= '/home' exact/>
           <Route path="/home" component={Home}/>
-          <Route path='/appointment' component={AppointmentContainer}/>
+          <Route path='/appointments' component={AppointmentContainer}/>
           <Route path='/ourservices' component={OurServices}/>
           <Route path='/login' component={Login}/>
           <Route path='/register' component={Register}/>

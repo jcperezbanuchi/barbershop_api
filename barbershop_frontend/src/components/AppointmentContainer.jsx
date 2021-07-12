@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import NewAppointment from './NewAppointment'
 import { Button } from 'reactstrap'
+import UpdateAppointments from './UpdateAppointments'
+
 const baseURL  = 'http://localhost:8001/'
 
 export default class AppointmentContainer extends Component {
@@ -9,14 +11,19 @@ export default class AppointmentContainer extends Component {
         this.state = {
             appointmentList: [],
             modal: false,
-            
+            updateAppointment: {},
+            showUpdateForm: false
         }
     }
     componentDidMount = () => {
         this.getAppointments()
     }
     toggle = () => {
-        this.setState({ modal: !this.state.modal });
+        this.setState({ 
+            modal: !this.state.modal,
+            showUpdateForm: false
+        });
+
       };
 
     handleCloseModal () {
@@ -27,24 +34,51 @@ export default class AppointmentContainer extends Component {
         const copyAppointments = [...this.state.appointmentList]
         copyAppointments.unshift(appointment)
         this.setState({
-            appointmentList: copyAppointments
+            appointmentList: copyAppointments  
         })
     }
 
     getAppointments() {
-        fetch(baseURL + 'appointments')
+        fetch(`${baseURL}appointments`)
         .then(data => { return data.json()}, err => console.log(err))
-            .then(parsedData => {this.setState({appointmentList: parsedData.data})}, err => console.log(err))
+            .then(parsedData => {this.setState({appointmentList: parsedData})}, err => console.log(err))
             .catch((e)=>console.log(e.message))
     }
+
+    deleteAppointment(id) {
+        fetch(`${baseURL}appointments/${id}`, {
+          method: 'DELETE'
+        })
+          .then(res => res) 
+           .then((data)=>{
+               if(data){
+               this.getAppointments()
+                }
+            }) 
+      }
+
+    showUpdateForm(appointment) {
+        this.setState({
+            modal: true,
+            showUpdateForm: true,
+            updateAppointment: appointment
+        })
+    }
+
   
     render() {
         return (
             <div>
-                <Button onClick= {(e) =>this.toggle(e)}>Make an Appointment</Button>{ this.state.modal ?
-                <NewAppointment isOpen={true} toggle = {() => this.toggle} handleAddAppointment = {(appointment) => this.handleAddAppointment(appointment)} handleCloseModal ={(e)=> this.handleCloseModal}/>
+                <Button onClick= {(e) =>this.toggle(e)}>Make an Appointment</Button> { this.state.modal ?
+                <NewAppointment isOpen={true} toggle = {() => this.toggle} handleAddAppointment = {(appointment) => this.handleAddAppointment(appointment)} />
                 :
                 ''
+                }
+                {
+                     this.state.showUpdateForm?
+                     <UpdateAppointments toggle = {() => this.toggle}handleUpdateAppointment ={(appointment)=> this.handleUpdateAppointment(appointment)} appointment = {this.state.updateAppointment} />
+                     :
+                     ''
                 }
                 <table>
                     <thead>
