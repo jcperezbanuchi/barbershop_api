@@ -1,4 +1,4 @@
-#!/Users/juanco/Documents/Portfolio/barbershop_app/barbershop/venv/bin/python3
+#!/Users/juanco/Documents/Portfolio/barbershop_app/venv/bin/python3
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 
