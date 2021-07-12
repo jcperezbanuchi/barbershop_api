@@ -151,4 +151,3 @@ CORS_ORIGIN_WHITELIST = [
 django_heroku.settings(locals())
 APPEND_SLASH=False
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
