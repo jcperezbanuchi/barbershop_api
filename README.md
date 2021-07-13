@@ -1,6 +1,6 @@
 # barbershop_App
 
-<img src="https://i.ibb.co/55WgC1B/Screen-Shot-2021-07-13-at-12-31-37-PM.png" atl="website screenshot"width="500"/>
+<img src="https://i.ibb.co/55WgC1B/Screen-Shot-2021-07-13-at-12-31-37-PM.png" width="500">
 
 <h3>The Technologies Used</h3>
 <ul>
