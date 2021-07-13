@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-ixl2w=-0afo=7&m7_(rntg4ni&=@mj6njih52!w2airqn)(pc5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['https://barbers-app.herokuapp.com/', 'localhost', '127.0.0.1']
 
